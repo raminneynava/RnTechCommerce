@@ -14,5 +14,6 @@ namespace _Framework.Domain
         Task Create(T entity);
         Task<bool> Exists(Expression<Func<T,bool>> expression);
         Task SaveChangesAsync();
+        void SaveChanges();
     }
 }

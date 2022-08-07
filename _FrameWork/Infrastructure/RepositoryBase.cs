@@ -40,9 +40,14 @@ namespace _Framework.Infrastructure
             return await _context.Set<T>().ToListAsync();
         }
 
-        public Task SaveChangesAsync()
+        public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
+        }
+
+        public async Task SaveChangesAsync()
+        {
+           await _context.SaveChangesAsync();
         }
     }
 }

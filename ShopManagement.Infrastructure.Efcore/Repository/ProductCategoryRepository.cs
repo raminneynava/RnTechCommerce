@@ -41,18 +41,18 @@ namespace ShopManagement.Infrastructure.Efcore.Repository
 
         public async Task<IEnumerable<ProductCategoryViewModel>> Search(ProductCategorySearchViewModel searchModel)
         {
-            var query =  _context.ProductCategories.Select(x => new ProductCategoryViewModel()
+            var query =  _context.ProductCategories.AsNoTrackingWithIdentityResolution().Select(x => new ProductCategoryViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,
                 Picture = x.Picture,
             });
-
             if (!String.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
 
+            query = query.OrderByDescending(x => x.Id);
 
-            return await query.OrderByDescending(x => x.Id).ToListAsync();
+            return await query.ToListAsync();
 
         }
     }

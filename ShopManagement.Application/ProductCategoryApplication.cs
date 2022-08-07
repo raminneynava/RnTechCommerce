@@ -11,7 +11,7 @@ using ShopManagement.Domain.ProductCategoryAgg;
 
 namespace ShopManagement.Application
 {
-    internal class ProductCategoryApplication : IProductCategoryApplication
+    public class ProductCategoryApplication : IProductCategoryApplication
     {
         private readonly IProductCategoryRepository _productCategoryRepository;
 
@@ -22,24 +22,33 @@ namespace ShopManagement.Application
 
         public async Task<OperationResult> Create(CreateProductCategory Command)
         {
-            var slug = Command.Slug.Slugify();
-            if (await _productCategoryRepository.Exists(x => x.Slug == slug))
-                return new OperationResult().Failed("آدرس تکراری است");
+            try
+            {
+                var slug = Command.Slug.Slugify();
+                if (await _productCategoryRepository.Exists(x => x.Slug == slug))
+                    return new OperationResult().Failed("آدرس تکراری است");
 
-            var productCategory = new ProductCategory(
-                Command.Name,
-                Command.Description,
-                Command.Picture,
-                Command.PictureAlt,
-                Command.PictureTitle,
-                Command.Keyword,
-                Command.MetaDescript,
-                slug
-                );
-            await _productCategoryRepository.Create(productCategory);
-            await _productCategoryRepository.SaveChangesAsync();
+                var productCategory = new ProductCategory(
+                    Command.Name,
+                    Command.Description,
+                    Command.Picture,
+                    Command.PictureAlt,
+                    Command.PictureTitle,
+                    Command.Keyword,
+                    Command.MetaDescript,
+                    slug
+                    );
+                await _productCategoryRepository.Create(productCategory);
+                await _productCategoryRepository.SaveChangesAsync();
 
-            return new OperationResult().Succedded();
+                return new OperationResult().Succedded();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task<OperationResult> Edit(EditProductCategory Command)
@@ -63,14 +72,14 @@ namespace ShopManagement.Application
                 Command.MetaDescript,
                 slug
                 );
-           await _productCategoryRepository.SaveChangesAsync();
+            await _productCategoryRepository.SaveChangesAsync();
 
             return new OperationResult().Succedded();
         }
 
         public async Task<EditProductCategory> GetById(long id)
         {
-           return await _productCategoryRepository.GetDetail(id);
+            return await _productCategoryRepository.GetDetail(id);
         }
 
         public async Task<IEnumerable<ProductCategoryViewModel>> Search(ProductCategorySearchViewModel searchModel)
