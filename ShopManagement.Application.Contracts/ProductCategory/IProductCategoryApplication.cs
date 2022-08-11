@@ -14,5 +14,6 @@ namespace ShopManagement.Application.Contracts.ProductCategory
         Task<OperationResult> Edit(EditProductCategory Command);
         Task<IEnumerable<ProductCategoryViewModel>> Search(ProductCategorySearchViewModel searchModel);
         Task<EditProductCategory> GetById(long id);
+        Task<IEnumerable<ProductCategoryViewModel>> GetProductCategories();
     }
 }

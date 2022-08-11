@@ -13,5 +13,6 @@ namespace ShopManagement.Domain.ProductCategoryAgg
     {
         Task<IEnumerable<ProductCategoryViewModel>> Search(ProductCategorySearchViewModel searchModel);
         Task<EditProductCategory> GetDetail(long id);
+        Task<IEnumerable<ProductCategoryViewModel>> GetProductCategories();
     }
 }

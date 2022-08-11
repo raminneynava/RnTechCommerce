@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using _Framework.Domain;
 
+using ShopManagement.Domain.ProductAgg;
+
 namespace ShopManagement.Domain.ProductCategoryAgg
 {
     public class ProductCategory:EntityBase
@@ -18,7 +20,12 @@ namespace ShopManagement.Domain.ProductCategoryAgg
         public string? Keyword { get; private set; }
         public string? MetaDescript { get; private set; }
         public string? Slug { get; private set; }
+        public ICollection<Product>  Products { get; private set; }
 
+        public ProductCategory()
+        {
+            Products = new List<Product>();
+        }
         public ProductCategory(string? name, string? description, string? picture, string? pictureAlt, string? pictureTitle, string? keyword, string? metaDescript, string? slug)
         {
             Name = name;

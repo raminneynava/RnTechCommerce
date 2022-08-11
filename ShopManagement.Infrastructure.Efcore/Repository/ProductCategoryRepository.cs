@@ -39,6 +39,15 @@ namespace ShopManagement.Infrastructure.Efcore.Repository
          return query;
         }
 
+        public async Task<IEnumerable<ProductCategoryViewModel>> GetProductCategories()
+        {
+            return await _context.ProductCategories.Select(x => new ProductCategoryViewModel{
+                Id=x.Id,
+                Name=x.Name
+
+            }).ToListAsync();
+        }
+
         public async Task<IEnumerable<ProductCategoryViewModel>> Search(ProductCategorySearchViewModel searchModel)
         {
             var query =  _context.ProductCategories.AsNoTrackingWithIdentityResolution().Select(x => new ProductCategoryViewModel()

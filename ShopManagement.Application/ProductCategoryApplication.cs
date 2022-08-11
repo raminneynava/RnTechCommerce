@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using _Framework.Application;
 
+using _FrameWork.Application;
+
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 
@@ -56,12 +58,12 @@ namespace ShopManagement.Application
 
             var productcategoru = await _productCategoryRepository.Get(Command.Id);
             if (productcategoru == null)
-                return new OperationResult().Failed("رکوردی یافت نشد");
+                return new OperationResult().Failed(ApplicationMessages.RecordNotFound);
 
             var slug = Command.Slug.Slugify();
 
             if (await _productCategoryRepository.Exists(x => x.Slug == slug && x.Id != Command.Id))
-                return new OperationResult().Failed("آدرس تکراری است");
+                return new OperationResult().Failed(ApplicationMessages.DublicatedRecord);
             productcategoru.Edit(
                 Command.Name,
                 Command.Description,
@@ -80,6 +82,11 @@ namespace ShopManagement.Application
         public async Task<EditProductCategory> GetById(long id)
         {
             return await _productCategoryRepository.GetDetail(id);
+        }
+
+        public async Task<IEnumerable<ProductCategoryViewModel>> GetProductCategories()
+        {
+            return await _productCategoryRepository.GetProductCategories();
         }
 
         public async Task<IEnumerable<ProductCategoryViewModel>> Search(ProductCategorySearchViewModel searchModel)
