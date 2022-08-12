@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPrictureAqq;
+using ShopManagement.Domain.SliderAgg;
 
 namespace ShopManagement.Infrastructure.Efcore
 {
@@ -17,6 +18,7 @@ namespace ShopManagement.Infrastructure.Efcore
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductPicture> ProductPictures { get; set; }
+        public DbSet<Slider> Sliders { get; set; }
 
         public ShopContext(DbContextOptions<ShopContext> options):base (options)
         {
