@@ -1,0 +1,40 @@
+﻿@model InventoryManagement.Application.Contract.Inventory.IncreaseInventory
+
+@{
+
+}
+<form asp-page="./Index" asp-page-handler="Increase" method="post" data-ajax="true" data-callback="" data-action="Refresh">
+    <input name="InventoryId" value="@Model.InventoryId" type="hidden" />
+    <div class="modal-header">
+        <h5 class="modal-title" id="myExtraLargeModalLabel">افزایش انبار</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Count">تعداد</label>
+                    <input type="text" class="form-control" asp-for="Count">
+                    <span asp-validation-for="Count" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Description">متن</label>
+                    <textarea class="form-control" asp-for="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success waves-effect waves-light">افزایش</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">لغو</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+@await Html.PartialAsync("_ValidationScriptsPartial")

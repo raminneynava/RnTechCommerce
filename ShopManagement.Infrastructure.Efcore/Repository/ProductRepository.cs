@@ -19,6 +19,7 @@ namespace ShopManagement.Infrastructure.Efcore.Repository
     {
         private readonly ShopContext _context;
 
+
         public ProductRepository(ShopContext context) : base(context)
         {
             _context = context;
@@ -39,7 +40,6 @@ namespace ShopManagement.Infrastructure.Efcore.Repository
                 ProductCategoryId = x.ProductCategoryId,
                 Code=x.Code,
                 IsActive=x.IsActive,
-                UnitPrice=x.UnitPrice
             }).FirstOrDefaultAsync(x => x.Id == id);
             return query;
         }
@@ -50,8 +50,6 @@ namespace ShopManagement.Infrastructure.Efcore.Repository
             {
                 Id = x.Id,
                 Name = x.Name,
-                UnitPrice = x.UnitPrice,
-                IsInStock = x.IsInStock,
                 Code = x.Code,
                 Category = x.ProductCategory.Name,
                 ProductCategoryId = x.ProductCategoryId,

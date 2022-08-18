@@ -10,6 +10,7 @@ using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPrictureAqq;
 using ShopManagement.Domain.SliderAgg;
+using ShopManagement.Infrastructure.Efcore.Mapping;
 
 namespace ShopManagement.Infrastructure.Efcore
 {
@@ -27,7 +28,7 @@ namespace ShopManagement.Infrastructure.Efcore
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            var assembly= typeof(ProductCategory).Assembly;
+            var assembly= typeof(ProductCategoryMapping).Assembly;
             modelbuilder.ApplyConfigurationsFromAssembly(assembly);
 
             modelbuilder.Entity<Product>().HasQueryFilter(x => x.IsDeleted==false);

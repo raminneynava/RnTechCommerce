@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using DiscountManagement.Domain.CustomerDiscountAgg;
+using DiscountManagement.Infrastructure.Efcore.Mapping;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,7 @@ namespace DiscountManagement.Infrastructure.Efcore
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            var assembly = typeof(CustomerDiscount).Assembly;
+            var assembly = typeof(CustomerDiscountMapping).Assembly;
             modelbuilder.ApplyConfigurationsFromAssembly(assembly);
 
             modelbuilder.Entity<CustomerDiscount>().HasQueryFilter(x => x.IsRemoved == false);

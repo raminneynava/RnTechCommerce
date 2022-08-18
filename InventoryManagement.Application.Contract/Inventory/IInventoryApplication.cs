@@ -13,9 +13,10 @@ namespace InventoryManagement.Application.Contract.Inventory
         Task<OperationResult> Create(CreateInventory command);
         Task<OperationResult> Edit(EditInventory command);
         Task<OperationResult> Increase(IncreaseInventory command);
-        Task<OperationResult> Reduse(List<ReduseInventory> command);
-        Task<OperationResult> Reduse(ReduseInventory command);
+        Task<OperationResult> Reduse(List<ReduceInventory> command);
+        Task<OperationResult> Reduse(ReduceInventory command);
         Task<EditInventory> GetById(long id);
         Task<IEnumerable<InventoryViewModel>> Search(InventorySearchModel searchModel);
+        Task<IEnumerable<InventoryOperationViewModel>> GetOperationLog(long inventoryId);
     }
 }

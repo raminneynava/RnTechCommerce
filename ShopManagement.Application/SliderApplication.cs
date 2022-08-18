@@ -30,7 +30,7 @@ namespace ShopManagement.Application
                 Command.Picture,
                 Command.PictureAlt,
                 Command.PictureTitle,
-                Command.Order);
+                Command.Order, Command.Link);
             await _sliderRepository.Create(Slider);
             await _sliderRepository.SaveChangesAsync();
 
@@ -60,7 +60,8 @@ namespace ShopManagement.Application
                 Command.Picture,
                 Command.PictureAlt,
                 Command.PictureTitle,
-                Command.Order
+                Command.Order,
+                Command.Link
                 );
             await _sliderRepository.SaveChangesAsync();
 

@@ -53,15 +53,5 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Product
             var result = await _product.Edit(Edit);
             return new JsonResult(result);
         }
-        public async Task<JsonResult> OnGetNotInStock(long id)
-        {
-            var result = await _product.NotInstock(id);
-            return new JsonResult(result);
-        }
-        public async Task<JsonResult> OnGetIsStock(long id)
-        {
-            var result = await _product.IsInstock(id);
-            return new JsonResult(result);
-        }
     }
 }

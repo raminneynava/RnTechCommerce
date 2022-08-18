@@ -38,6 +38,10 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.ProductCategory
         }
         public async Task<JsonResult> OnPostEdit(EditProductCategory Edit)
         {
+            if (!ModelState.IsValid)
+            {
+                return new JsonResult(false);
+            }
             var result = await _productCategory.Edit(Edit);
             return new JsonResult(result);
         }

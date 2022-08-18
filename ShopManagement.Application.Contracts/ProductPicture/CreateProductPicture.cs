@@ -10,7 +10,7 @@ namespace ShopManagement.Application.Contracts.ProductPicture
     {
         public long ProductId { get;  set; }
         public string Pricture { get;  set; }
-        public string? PrictureAlt { get;  set; }
-        public string? PrictureTitle { get;  set; }
+        public string PrictureAlt { get;  set; }
+        public string PrictureTitle { get;  set; }
     }
 }

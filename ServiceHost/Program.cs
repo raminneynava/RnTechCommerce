@@ -1,4 +1,8 @@
+using _FrameWork.Application;
+
 using InventoryManagement.Configuration;
+
+using ServiceHost.Services;
 
 using ShopManagement.Configuration;
 
@@ -9,7 +13,7 @@ var conectionString = builder.Configuration.GetConnectionString("SqlServer");
 
 ShopManagementBootstraper.Configure(builder.Services, conectionString);
 InventoryManagementBootstraper.Configure(builder.Services, conectionString);
-
+builder.Services.AddTransient<IFileUploader, FileUploader>();
 
 // Add services to the container.
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();

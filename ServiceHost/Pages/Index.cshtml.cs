@@ -12,9 +12,8 @@ namespace ServiceHost.Pages
             _logger = logger;
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
-          return  Redirect("/admin");
         }
     }
 }

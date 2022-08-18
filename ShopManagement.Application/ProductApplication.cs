@@ -34,7 +34,6 @@ namespace ShopManagement.Application
                     Command.Name,
                     Command.Code,
                     Command.Description,
-                    Command.UnitPrice,
                     Command.ProductCategoryId,
                     Command.Picture,
                     Command.PictureAlt,
@@ -49,7 +48,7 @@ namespace ShopManagement.Application
 
                 return new OperationResult().Succedded();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -81,7 +80,6 @@ namespace ShopManagement.Application
                 Command.Name,
                 Command.Code,
                 Command.Description,
-                Command.UnitPrice,
                 Command.ProductCategoryId,
                 Command.Picture,
                 Command.PictureAlt,
@@ -99,26 +97,6 @@ namespace ShopManagement.Application
         public async Task<EditProduct> GetById(long id)
         {
             return await _productRepository.GetDetail(id);
-        }
-
-        public async Task<OperationResult> IsInstock(long id)
-        {
-            var product = await _productRepository.Get(id);
-            if(product == null)
-                return new OperationResult().Failed(ApplicationMessages.RecordNotFound);
-            product.IsStock();
-           await _productRepository.SaveChangesAsync();
-            return new OperationResult().Succedded();
-        }
-
-        public async Task<OperationResult> NotInstock(long id)
-        {
-            var product = await _productRepository.Get(id);
-            if (product == null)
-                return new OperationResult().Failed(ApplicationMessages.RecordNotFound);
-            product.NotInStock();
-            await _productRepository.SaveChangesAsync();
-            return new OperationResult().Succedded();
         }
 
         public async Task<IEnumerable<ProductViewModel>> Search(ProductSearchModel searchModel)

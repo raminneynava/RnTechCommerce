@@ -15,5 +15,6 @@ namespace InventoryManagement.Domain.InventoryAgg
         Task<EditInventory> GetById(long id);
         Task<IEnumerable<InventoryViewModel>> Search(InventorySearchModel searchModel);
         Task<Inventory> GetBy(long ProductId);
+        Task<IEnumerable<InventoryOperationViewModel>> GetOperationLog(long inventoryId);
     }
 }

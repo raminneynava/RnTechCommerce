@@ -15,11 +15,13 @@ namespace ShopManagement.Application
 {
     public class ProductCategoryApplication : IProductCategoryApplication
     {
+        private readonly IFileUploader _fileUploader;
         private readonly IProductCategoryRepository _productCategoryRepository;
 
-        public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository)
+        public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository, IFileUploader fileUploader)
         {
             _productCategoryRepository = productCategoryRepository;
+            _fileUploader = fileUploader;
         }
 
         public async Task<OperationResult> Create(CreateProductCategory Command)
@@ -27,13 +29,14 @@ namespace ShopManagement.Application
             try
             {
                 var slug = Command.Slug.Slugify();
+                var filename = _fileUploader.Upload(Command.Picture, "");
                 if (await _productCategoryRepository.Exists(x => x.Slug == slug))
                     return new OperationResult().Failed("آدرس تکراری است");
 
                 var productCategory = new ProductCategory(
                     Command.Name,
                     Command.Description,
-                    Command.Picture,
+                    filename,
                     Command.PictureAlt,
                     Command.PictureTitle,
                     Command.Keyword,
@@ -45,7 +48,7 @@ namespace ShopManagement.Application
 
                 return new OperationResult().Succedded();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -61,13 +64,13 @@ namespace ShopManagement.Application
                 return new OperationResult().Failed(ApplicationMessages.RecordNotFound);
 
             var slug = Command.Slug.Slugify();
-
+            var filename = _fileUploader.Upload(Command.Picture, "");
             if (await _productCategoryRepository.Exists(x => x.Slug == slug && x.Id != Command.Id))
                 return new OperationResult().Failed(ApplicationMessages.DublicatedRecord);
             productcategoru.Edit(
                 Command.Name,
                 Command.Description,
-                Command.Picture,
+                filename,
                 Command.PictureAlt,
                 Command.PictureTitle,
                 Command.Keyword,

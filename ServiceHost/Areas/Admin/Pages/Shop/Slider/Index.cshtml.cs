@@ -22,7 +22,7 @@ namespace ServiceHost.Areas.Admin.Pages.Shop.Slider
             Slider = await _slider.GetList();
         }
 
-        public async Task<IActionResult> OnGetCreate()
+        public IActionResult OnGetCreate()
         {
             return Partial("./Create", new CreateSlider());
         }

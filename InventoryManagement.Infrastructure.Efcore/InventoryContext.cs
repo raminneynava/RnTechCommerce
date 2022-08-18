@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using InventoryManagement.Domain.InventoryAgg;
+using InventoryManagement.Infrastructure.Efcore.Mapping;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,7 @@ namespace InventoryManagement.Infrastructure.Efcore
         }
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
-            var assembly = typeof(Inventory).Assembly;
+            var assembly = typeof(InventoryMapping).Assembly;
             modelbuilder.ApplyConfigurationsFromAssembly(assembly);
 
            // modelbuilder.Entity<Inventory>().HasQueryFilter(x => x.IsRemoved == false);

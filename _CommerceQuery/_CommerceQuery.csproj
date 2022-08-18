@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DiscountManagement.Infrastructure.Efcore\DiscountManagement.Infrastructure.Efcore.csproj" />
+    <ProjectReference Include="..\InventoryManagement.Infrastructure.Efcore\InventoryManagement.Infrastructure.Efcore.csproj" />
+    <ProjectReference Include="..\ShopManagement.Infrastructure.Efcore\ShopManagement.Infrastructure.Efcore.csproj" />
+  </ItemGroup>
+
+</Project>

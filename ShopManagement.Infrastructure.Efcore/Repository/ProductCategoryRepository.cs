@@ -31,7 +31,7 @@ namespace ShopManagement.Infrastructure.Efcore.Repository
            Name=x.Name,
            MetaDescript=x.MetaDescript,
            Keyword=x.Keyword,
-           Picture=x.Picture,
+         //  Picture=x.Picture,
            PictureAlt=x.PictureAlt,
            PictureTitle=x.PictureTitle,
            Slug=x.Slug

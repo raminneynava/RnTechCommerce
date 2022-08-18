@@ -51,6 +51,11 @@ namespace InventoryManagement.Application
             return await _repository.GetById(id);
         }
 
+        public Task<IEnumerable<InventoryOperationViewModel>> GetOperationLog(long inventoryId)
+        {
+           return _repository.GetOperationLog(inventoryId);
+        }
+
         public async Task<OperationResult> Increase(IncreaseInventory command)
         {
             var inventory = await _repository.Get(command.InventoryId);
@@ -62,7 +67,7 @@ namespace InventoryManagement.Application
             return new OperationResult().Succedded();
         }
 
-        public async Task<OperationResult> Reduse(List<ReduseInventory> command)
+        public async Task<OperationResult> Reduse(List<ReduceInventory> command)
         {
             const string operatorid = "1";
             foreach (var item in command)
@@ -74,7 +79,7 @@ namespace InventoryManagement.Application
             return new OperationResult().Succedded();
         }
 
-        public async Task<OperationResult> Reduse(ReduseInventory command)
+        public async Task<OperationResult> Reduse(ReduceInventory command)
         {
             var inventory = await _repository.Get(command.InventoryId);
             if (inventory == null)

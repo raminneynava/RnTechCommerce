@@ -14,12 +14,12 @@ namespace ShopManagement.Domain.ProductPrictureAqq
     {
         public long ProductId { get; private set; }
         public string Picture { get; private set; }
-        public string? PictureAlt { get;private set; }
-        public string? PictureTitle { get; private set; }
+        public string PictureAlt { get;private set; }
+        public string PictureTitle { get; private set; }
         public bool IsRemoved { get; private set; }
         public Product product { get; private set; }
 
-        public ProductPicture(long productId, string picture, string? pictureAlt, string? pictureTitle)
+        public ProductPicture(long productId, string picture, string pictureAlt, string pictureTitle)
         {
             ProductId = productId;
             Picture = picture;
@@ -27,7 +27,7 @@ namespace ShopManagement.Domain.ProductPrictureAqq
             PictureTitle = pictureTitle;
             IsRemoved = false;
         }
-        public void Edit(long productId, string picture, string? pictureAlt, string? pictureTitle)
+        public void Edit(long productId, string picture, string pictureAlt, string pictureTitle)
         {
             ProductId = productId;
             Picture = picture;

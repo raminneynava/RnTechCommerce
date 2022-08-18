@@ -42,6 +42,24 @@ namespace InventoryManagement.Infrastructure.Efcore.Repository
             }).FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<IEnumerable<InventoryOperationViewModel>> GetOperationLog(long inventoryId)
+        {
+            var inventory =await _inventoryContext.Inventory.FirstOrDefaultAsync(x=>x.Id== inventoryId);
+            return inventory.Operations.Select(x=>new InventoryOperationViewModel
+            {
+                Id=x.Id,
+                Count=x.Count,
+                Description=x.Description,
+                OperationDate=x.OperationDate,
+                OperatorId=x.OperatorId,
+                OrderId=x.OrderId,
+                InventoryId=inventoryId,
+                CurrentCount=x.CurrentCount,
+                Operation=x.Operation,
+                Operator="مدیر سیستم"
+            }).OrderByDescending(x=>x.Id).ToList();
+        }
+
         public async Task<IEnumerable<InventoryViewModel>> Search(InventorySearchModel searchModel)
         {
             var products = await _shopyContext.Products.Select(x => new { x.Id, x.Name }).ToListAsync();
@@ -57,8 +75,8 @@ namespace InventoryManagement.Infrastructure.Efcore.Repository
             });
             if(searchModel.ProductId>0)
                 query= query.Where(x => x.ProductId==searchModel.ProductId);
-            if (!searchModel.InStock)
-                query = query.Where(x => x.InStock);
+            //if (!searchModel.InStock)
+            //    query = query.Where(x => x.InStock);
 
             var inventory =await query.OrderByDescending(x => x.Id).ToListAsync();
             inventory.ForEach(item =>

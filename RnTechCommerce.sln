@@ -49,19 +49,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement", "Inve
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Domain", "IM.Domain", "{A0A885BA-1EBA-44C7-905A-BA304182AA4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{888937FC-0F3A-432B-8EC7-6C8294DF25AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{888937FC-0F3A-432B-8EC7-6C8294DF25AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Application", "IM.Application", "{E6FB4420-52EB-4B3F-AE16-159997D6F0B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application", "InventoryManagement.Application\InventoryManagement.Application.csproj", "{3CE14826-92F4-4949-B430-FCAA40B2C8DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Application", "InventoryManagement.Application\InventoryManagement.Application.csproj", "{3CE14826-92F4-4949-B430-FCAA40B2C8DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application.Contract", "InventoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj", "{E00F1CA0-5C16-4121-AE3A-457C723A45CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Application.Contract", "InventoryManagement.Application.Contract\InventoryManagement.Application.Contract.csproj", "{E00F1CA0-5C16-4121-AE3A-457C723A45CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Infrastructure", "IM.Infrastructure", "{2A4944B6-6D49-4F8B-B088-87ABAFFE9FA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Configuration", "InventoryManagement.Configuration\InventoryManagement.Configuration.csproj", "{D1953C01-EC29-4DF9-B6DC-9ADEC7732006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Configuration", "InventoryManagement.Configuration\InventoryManagement.Configuration.csproj", "{D1953C01-EC29-4DF9-B6DC-9ADEC7732006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Infrastructure.Efcore", "InventoryManagement.Infrastructure.Efcore\InventoryManagement.Infrastructure.Efcore.csproj", "{B54351DE-5A12-417A-9247-93853FF34F93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Infrastructure.Efcore", "InventoryManagement.Infrastructure.Efcore\InventoryManagement.Infrastructure.Efcore.csproj", "{B54351DE-5A12-417A-9247-93853FF34F93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_CommerceQuery", "_CommerceQuery\_CommerceQuery.csproj", "{9B565428-AA17-4037-B6AC-A5FB4952250D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,6 +139,10 @@ Global
 		{B54351DE-5A12-417A-9247-93853FF34F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B54351DE-5A12-417A-9247-93853FF34F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B54351DE-5A12-417A-9247-93853FF34F93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B565428-AA17-4037-B6AC-A5FB4952250D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B565428-AA17-4037-B6AC-A5FB4952250D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B565428-AA17-4037-B6AC-A5FB4952250D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B565428-AA17-4037-B6AC-A5FB4952250D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -171,6 +177,7 @@ Global
 		{2A4944B6-6D49-4F8B-B088-87ABAFFE9FA4} = {F62F9CCA-18D6-4EE1-8AAC-51D01EC6A718}
 		{D1953C01-EC29-4DF9-B6DC-9ADEC7732006} = {2A4944B6-6D49-4F8B-B088-87ABAFFE9FA4}
 		{B54351DE-5A12-417A-9247-93853FF34F93} = {2A4944B6-6D49-4F8B-B088-87ABAFFE9FA4}
+		{9B565428-AA17-4037-B6AC-A5FB4952250D} = {DA220595-AD4A-454E-827D-7F30705CA1B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C65EDFEE-4FAF-47BD-993C-E0C1E3FFDE72}

@@ -35,13 +35,6 @@
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label asp-for="UnitPrice">قیمت واحد</label>
-                    <input type="text" class="form-control" asp-for="UnitPrice">
-                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
                     <label asp-for="IsActive">وضعیت</label>
                     <input type="text" class="form-control" asp-for="IsActive">
                     <span asp-validation-for="IsActive" class="text-danger"></span>
@@ -116,10 +109,4 @@
 
     </div>
 </form>
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-<script>
-    $.validator.setDefaults({
-        ignore: ""
-    });
-</script>
+@await Html.PartialAsync("_ValidationScriptsPartial")

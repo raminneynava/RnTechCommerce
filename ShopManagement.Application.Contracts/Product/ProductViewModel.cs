@@ -6,8 +6,6 @@
         public string Name { get; set; }
         public string Code { get; set; }
         public string Category { get; set; }
-        public bool IsInStock { get; set; }//mojoodi anbar
         public long ProductCategoryId { get; set; }
-        public double UnitPrice { get; set; }
     }
 }

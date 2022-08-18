@@ -11,16 +11,17 @@ namespace ShopManagement.Domain.SliderAgg
     public class Slider : EntityBase
     {
         public string Name { get; private set; }
-        public string? TitleOne { get; private set; }
-        public string? TitleTwo { get; private set; }
-        public string? Picture { get; private set; }
-        public string? PictureAlt { get; private set; }
-        public string? PictureTitle { get; private set; }
+        public string TitleOne { get; private set; }
+        public string TitleTwo { get; private set; }
+        public string Picture { get; private set; }
+        public string PictureAlt { get; private set; }
+        public string PictureTitle { get; private set; }
         public int Order { get; private set; }
         public bool IsActive { get; private set; }
-        public bool IsRemovwd { get; private set; }
-        
-        public Slider(string name, string? titleOne, string? titleTwo, string? picture, string? pictureAlt, string? pictureTitle, int order)
+        public bool IsRemoved { get; private set; }
+        public string Link { get; private set; }
+
+        public Slider(string name, string titleOne, string titleTwo, string picture, string pictureAlt, string pictureTitle, int order, string link)
         {
             Name = name;
             TitleOne = titleOne;
@@ -30,11 +31,12 @@ namespace ShopManagement.Domain.SliderAgg
             PictureTitle = pictureTitle;
             Order = order;
             IsActive = true;
-            IsRemovwd = false;
+            IsRemoved = false;
+            Link = link;
         }
 
 
-        public void Edit(string name, string? titleOne, string? titleTwo, string? picture, string? pictureAlt, string? pictureTitle, int order)
+        public void Edit(string name, string titleOne, string titleTwo, string picture, string pictureAlt, string pictureTitle, int order, string link)
         {
             Name = name;
             TitleOne = titleOne;
@@ -43,6 +45,7 @@ namespace ShopManagement.Domain.SliderAgg
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Order = order;
+            Link = link;
         }
 
         public void Enable()
@@ -55,7 +58,7 @@ namespace ShopManagement.Domain.SliderAgg
         }
         public void Removed()
         {
-            IsRemovwd = true;
+            IsRemoved = true;
         }
     }
 }

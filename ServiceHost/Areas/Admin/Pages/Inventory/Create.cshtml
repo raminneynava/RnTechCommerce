@@ -1,0 +1,40 @@
+﻿@model InventoryManagement.Application.Contract.Inventory.CreateInventory
+
+@{
+
+}
+<form asp-page="./Index" asp-page-handler="Create" method="post" data-ajax="true" data-callback="" data-action="Refresh">
+    <div class="modal-header">
+        <h5 class="modal-title" id="myExtraLargeModalLabel">ایجاد انبار جدید </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="ProductId">نام</label>
+                    <input type="text" class="form-control" asp-for="ProductId">
+                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="UnitPrice">قیمت واحد</label>
+                    <input class="form-control" asp-for="UnitPrice">
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success waves-effect waves-light">ذخیره</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light" data-dismiss="modal">لغو</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

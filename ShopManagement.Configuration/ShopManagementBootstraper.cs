@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using _CommerceQuery.Contract.Slide;
+using _CommerceQuery.Query;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -33,6 +36,7 @@ namespace ShopManagement.Configuration
             service.AddTransient<IProductPictureRepository, ProductPictureRepository>();
             service.AddTransient<ISliderRepository, SliderRepository>();
             service.AddTransient<ISliderApplication, SliderApplication>();
+            service.AddTransient<ISlideQuery, SlideQuery>();
             service.AddDbContext<ShopContext>(x => x.UseSqlServer(connectionString));
         }
     }
