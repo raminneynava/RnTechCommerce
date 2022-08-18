@@ -22,14 +22,8 @@ namespace DiscountManagement.Application
 
         public Task<OperationResult> Define(DefineCustomerDiscount Command)
         {
-            var discount = new CustomerDiscount(
-                Command.ProductId,
-                Command.CategoryId,
-                Command.DiscountRate,
-                Command.StartDate,
-                Command.EndDate,
-                Command.Reason,
-                );
+            throw new NotImplementedException();
+
         }
 
         public Task<OperationResult> Edit(EditCustomerDiscount Command)

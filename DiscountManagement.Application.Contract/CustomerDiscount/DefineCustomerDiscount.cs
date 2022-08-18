@@ -11,8 +11,8 @@ namespace DiscountManagement.Application.Contract.CustomerDiscount
         public long ProductId { get; set; }
         public long CategoryId { get; set; }
         public int DiscountRate { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
         public string Reason { get; set; }//text For discount Reason    
     }
 }

@@ -25,22 +25,38 @@ namespace DiscountManagement.Infrastructure.Efcore.Repository
 
         public async Task<EditCustomerDiscount> GetById(long id)
         {
-            var query= _context.CustomerDiscounts.Select(x => new EditCustomerDiscount{
+            var query= await _context.CustomerDiscounts.Select(x => new EditCustomerDiscount{
 
                 Id = id,
                 DiscountRate = x.DiscountRate,
-                StartDate=x.StartDate.ToString(),
-                EndDate=x.EndDate.ToString(),
+                StartDate=x.StartDate,
+                EndDate=x.EndDate,
                 CategoryId=x.CategoryId,
                 ProductId=x.ProductId,
                 Reason=x.Reason,
 
             }).FirstOrDefaultAsync(x=>x.Id==id);
+            return query;
         }
 
-        public Task<IEnumerable<CustomerDiscountViewModel>> Search(CustomerDiscountSearchModel searchModel)
+        public async Task<IEnumerable<CustomerDiscountViewModel>> Search(CustomerDiscountSearchModel searchModel)
         {
-            throw new NotImplementedException();
+            var query = _context.CustomerDiscounts.Select(x => new CustomerDiscountViewModel
+            {
+                Id = x.Id,
+                DiscountRate= x.DiscountRate,
+                EndDate= x.EndDate.ToString(),
+                StartDate= x.StartDate.ToString(),
+                CategoryId= x.CategoryId,
+                CategoryName=x.CategoryId.ToString(),
+                ProductId=x.ProductId,
+                ProductName=x.ProductId.ToString(),
+            });
+
+            if(!String.IsNullOrEmpty(searchModel.ProductName))
+                query= query.Where(x=>x.ProductName.Contains(searchModel.ProductName));
+
+            return await query.ToListAsync();
         }
     }
 }

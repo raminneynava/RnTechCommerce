@@ -1,3 +1,5 @@
+using InventoryManagement.Configuration;
+
 using ShopManagement.Configuration;
 
 
@@ -6,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var conectionString = builder.Configuration.GetConnectionString("SqlServer");
 
 ShopManagementBootstraper.Configure(builder.Services, conectionString);
+InventoryManagementBootstraper.Configure(builder.Services, conectionString);
 
 
 // Add services to the container.
